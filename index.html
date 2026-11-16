@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nome da Vereadora | Candidata a Vereadora - ?????</title>
+  <!-- Ícones Lucide via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Fonte Google: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       VARIÁVEIS E RESET (MOBILE-FIRST)
+       ========================================= */
+    :root {
+      --primary: #0f294a;       /* Azul Institucional Profundo */
+      --primary-light: #1e4273;
+      --accent: #10b981;        /* Verde Esperança / Renovação */
+      --accent-dark: #059669;
+      --gold: #f59e0b;          /* Destaque Número/Urna */
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(15, 41, 74, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* =========================================
+       HEADER & NAVEGAÇÃO RESPONSIVA
+       ========================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    .brand-number {
+      background: var(--gold);
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      padding: 0.3rem 0.65rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Menu Mobile */
+    .menu-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: var(--bg-card);
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transform: translateY(-150%);
+      opacity: 0;
+      transition: var(--transition);
+      display: flex;
+      z-index: 999;
+    }
+
+    .nav-links.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .btn-cta-nav {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 0.7rem 1.2rem !important;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    /* =========================================
+       CARROSSEL DE BANNERS (HERO SLIDER)
+       ========================================= */
+    .hero-carousel {
+      position: relative;
+      overflow: hidden;
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .slides-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      padding: 3.5rem 0 4.5rem;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 41, 74, 0.94) 0%, rgba(15, 41, 74, 0.78) 100%);
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .badge-urna {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fde68a;
+    }
+
+    .slide h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .slide p {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      margin-bottom: 1.75rem;
+      max-width: 560px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-photo-card {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .hero-photo-card img {
+      border-radius: 24px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .urna-floating {
+      position: absolute;
+      bottom: -15px;
+      right: -10px;
+      background: var(--gold);
+      color: var(--primary);
+      padding: 0.65rem 1.1rem;
+      border-radius: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      border: 3px solid #fff;
+    }
+
+    /* Controles do Banner */
+    .carousel-controls {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.6rem;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 10px;
+      background: var(--gold);
+    }
+
+    /* =========================================
+       SEÇÕES PADRÃO
+       ========================================= */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--accent-dark);
+      background: rgba(16, 185, 129, 0.12);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.85rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* =========================================
+       PROPOSTAS POLÍTICAS (COM FILTROS)
+       ========================================= */
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+      scrollbar-width: none;
+    }
+
+    .filter-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      white-space: nowrap;
+      padding: 0.6rem 1.15rem;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .proposals-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .proposal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .proposal-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .proposal-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(15, 41, 74, 0.08);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .proposal-card h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.65rem;
+    }
+
+    .proposal-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .proposal-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    /* =========================================
+       AGENDA POLÍTICA (EVENTOS E CAMINHADAS)
+       ========================================= */
+    .agenda-section {
+      background: #eef2f6;
+    }
+
+    .agenda-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .agenda-item {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      border-left: 5px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .agenda-date {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .date-box {
+      background: var(--primary);
+      color: #fff;
+      min-width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .date-box .day {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .date-box .month {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+      color: var(--gold);
+    }
+
+    .agenda-info h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .agenda-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .agenda-details span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-rsvp {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-dark);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .btn-rsvp.confirmed {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* =========================================
+       GALERIA DE FOTOS COM LIGHTBOX
+       ========================================= */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+      background: #cbd5e1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.75rem;
+      background: linear-gradient(transparent, rgba(15, 41, 74, 0.9));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Modal Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+    }
+
+    .lightbox-content img {
+      max-height: 75vh;
+      margin: 0 auto;
+      border-radius: 12px;
+    }
+
+    .lightbox-text {
+      color: #fff;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* =========================================
+       BANNER INTERMEDIÁRIO DE ENGAJAMENTO
+       ========================================= */
+    .banner-apoio {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 20px;
+      padding: 2.25rem 1.5rem;
+      color: #fff;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .banner-apoio h2 {
+      font-size: 1.65rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .banner-apoio p {
+      color: #cbd5e1;
+      max-width: 540px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* =========================================
+       FOOTER & BOTÃO FLUTUANTE WHATSAPP
+       ========================================= */
+    footer {
+      background: var(--primary);
+      color: #cbd5e1;
+      padding: 3rem 0 5.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .footer-legal {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      padding: 0.85rem 1.2rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 990;
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+    }
+
+    /* =========================================
+       MEDIA QUERIES (TABLET E DESKTOP)
+       ========================================= */
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      .nav-links {
+        position: static;
+        flex-direction: row;
+        transform: none;
+        opacity: 1;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+        align-items: center;
+        gap: 1.75rem;
+      }
+
+      .slide {
+        padding: 5rem 0;
+      }
+
+      .slide-content {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .slide h1 {
+        font-size: 2.85rem;
+      }
+
+      .proposals-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .agenda-item {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      footer {
+        padding-bottom: 3rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .proposals-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <span class="brand-number">Número da Candidata</span>
+        <div>
+          <span class="brand-name">Nome da Candidata</span>
+          <span class="brand-sub">Vereadora • Nome da Coligação ou Partido</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <i data-lucide="menu"></i>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#propostas">Propostas</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#apoie" class="btn-cta-nav">Quero Apoiar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= CARROSSEL DE BANNERS ================= -->
+  <section class="hero-carousel" style="padding: 0;">
+    <div class="slides-track" id="slidesTrack">
+      
+      <!-- Banner 1 -->
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80');">
+        <div class="container slide-content">
+          <div>
+            <span class="badge-urna"><i data-lucide="check-circle-2" size="16"></i> VOTE ????? • VEREADORA</span>
+            <h1>Trabalho sério para transformar nossos bairros.</h1>
+            <p>Compromisso real com saúde humanizada, creches em tempo integral e mobilidade urbana eficiente para quem mais precisa.</p>
+            <div class="hero-actions">
+              <a href="#propostas" class="btn btn-primary">Conhecer Propostas <i data-lucide="arrow-right" size="18"></i></a>
+              <a href="#agenda" class="btn btn-outline">Ver Agenda na Rua</a>
+            </div>
+          </div>
+          <div class="hero-photo-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Candidata Helena Martins">
+            <div class="urna-floating">Número ?????</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner 2 -->
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80');">
+        <div class="container slide-content">
+          <div>
+            <span class="badge-urna"><i data-lucide="heart-handshake" size="16"></i> SAÚDE E EDUCAÇÃO</span>
+            <h1>Fila zero nos postos de saúde e mais vagas em creches.</h1>
+            <p>Fiscalização ativa na Câmara Municipal e destinação de emendas parlamentares direto para as unidades básicas de saúde.</p>
+            <div class="hero-actions">
+              <a href="#propostas" class="btn btn-primary">Plano de Metas</a>
+              <a href="#apoie" class="btn btn-outline">Receber Material</a>
+            </div>
+          </div>
+          <div class="hero-photo-card">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Helena com a comunidade">
+            <div class="urna-floating">Número ?????</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="carousel-controls" id="carouselDots">
+      <button class="dot active" data-index="0" aria-label="Banner 1"></button>
+      <button class="dot" data-index="1" aria-label="Banner 2"></button>
+    </div>
+  </section>
+
+  <!-- ================= PROPOSTAS POLÍTICAS ================= -->
+  <section id="propostas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Plano de Atuação</span>
+        <h2>Propostas para a Nossa Cidade</h2>
+        <p>Projetos viáveis, construídos ouvindo moradores, associações de bairro e especialistas.</p>
+      </div>
+
+      <!-- Filtros por Eixo -->
+      <div class="filter-tabs" id="proposalFilters">
+        <button class="tab-btn active" data-filter="todos">Todas as Áreas</button>
+        <button class="tab-btn" data-filter="saude">Saúde</button>
+        <button class="tab-btn" data-filter="educacao">Educação</button>
+        <button class="tab-btn" data-filter="infraestrutura">Bairros e Mobilidade</button>
+        <button class="tab-btn" data-filter="emprego">Emprego e Renda</button>
+      </div>
+
+      <div class="proposals-grid" id="proposalsGrid">
+        <!-- Card 1 -->
+        <article class="proposal-card" data-category="saude">
+          <div>
+            <div class="proposal-icon"><i data-lucide="stethoscope"></i></div>
+            <h3>Título???</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Saúde Pública</span>
+            <span>Prioridade #01</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="proposal-card" data-category="educacao">
+          <div>
+            <div class="proposal-icon"><i data-lucide="graduation-cap"></i></div>
+            <h3>Título????</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Educação</span>
+            <span>Prioridade #02</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="proposal-card" data-category="infraestrutura">
+          <div>
+            <div class="proposal-icon"><i data-lucide="bus"></i></div>
+            <h3>Título????</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Infraestrutura</span>
+            <span>Prioridade #03</span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="proposal-card" data-category="emprego">
+          <div>
+            <div class="proposal-icon"><i data-lucide="briefcase"></i></div>
+            <h3>Título????</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Desenvolvimento</span>
+            <span>Prioridade #04</span>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="proposal-card" data-category="saude">
+          <div>
+            <div class="proposal-icon"><i data-lucide="heart-pulse"></i></div>
+            <h3>Título????</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Saúde Pública</span>
+            <span>Prioridade #05</span>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="proposal-card" data-category="infraestrutura">
+          <div>
+            <div class="proposal-icon"><i data-lucide="trees"></i></div>
+            <h3>Título????</h3>
+            <p>Texto a ser desenvolvido.</p>
+          </div>
+          <div class="proposal-meta">
+            <span>Eixo: Lazer e Cidadania</span>
+            <span>Prioridade #06</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AGENDA POLÍTICA ================= -->
+  <section id="agenda" class="agenda-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Olho no Olho</span>
+        <h2>Agenda da Campanha</h2>
+        <p>Participe das caminhadas, reuniões comunitárias e rodas de conversa no seu bairro.</p>
+      </div>
+
+      <div class="agenda-list">
+        <!-- Evento 1 -->
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <div class="date-box">
+              <span class="day">18</span>
+              <span class="month">SET</span>
+            </div>
+            <div class="agenda-info">
+              <h3>Caminhada com Moradores - Zona ??? (SUGESTÃO)</h3>
+              <div class="agenda-details">
+                <span><i data-lucide="clock" size="15"></i> 09h00 às 11h30</span>
+                <span><i data-lucide="map-pin" size="15"></i> Praça ????</span>
+              </div>
+            </div>
+          </div>
+
+          <!--
+          <button class="btn-rsvp" onclick="togglePresenca(this)">
+            <i data-lucide="calendar-check" size="16"></i> Confirmar Presença
+          </button>
+          -->
+
+        </div>
+          
+
+        <!-- Evento 2 -->
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <div class="date-box">
+              <span class="day">20</span>
+              <span class="month">SET</span>
+            </div>
+            <div class="agenda-info">
+              <h3>Roda de Conversa: Educação Inclusiva e Creches (SUSGESTÃO)</h3>
+              <div class="agenda-details">
+                <span><i data-lucide="clock" size="15"></i> 19h30</span>
+                <span><i data-lucide="map-pin" size="15"></i> Associação de Moradores ????</span>
+              </div>
+            </div>
+          </div>
+
+          <!--
+          <button class="btn-rsvp" onclick="togglePresenca(this)">
+            <i data-lucide="calendar-check" size="16"></i> Confirmar Presença
+          </button>
+          -->
+
+        </div>
+
+        <!-- Evento 3 -->
+        <div class="agenda-item">
+          <div class="agenda-date">
+            <div class="date-box">
+              <span class="day">22</span>
+              <span class="month">SET</span>
+            </div>
+            <div class="agenda-info">
+              <h3>Grande Adesivaço e Mobilização Regional (SUGESTÃO)</h3>
+              <div class="agenda-details">
+                <span><i data-lucide="clock" size="15"></i> 10h00 às 14h00</span>
+                <span><i data-lucide="map-pin" size="15"></i> Av. ?????</span>
+              </div>
+            </div>
+          </div>
+
+          <!--
+          <button class="btn-rsvp" onclick="togglePresenca(this)">
+            <i data-lucide="calendar-check" size="16"></i> Confirmar Presença
+          </button>
+          -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALERIA DE FOTOS ================= -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Registro nas Ruas</span>
+        <h2>Galeria de Mobilização</h2>
+        <p>Toque nas imagens para ampliar e acompanhar nossa caminhada junto à população.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=80" alt="Reunião comunitária no Jardim América">
+          <div class="gallery-caption">Reunião comunitária no ?????(SUGESTÃO)</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=700&q=80" alt="Diálogo com comerciantes locais">
+          <div class="gallery-caption">Diálogo com comerciantes locais(SUGESTÃO)</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=80" alt="Visita às escolas municipais">
+          <div class="gallery-caption">Escuta ativa com professores e pais(SUGESTÃO)</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=700&q=80" alt="Encontro da Juventude e Esporte">
+          <div class="gallery-caption">Encontro da Juventude e Esporte (SUGESTÃO)</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=700&q=80" alt="Mutirão de limpeza e cidadania">
+          <div class="gallery-caption">Ação comunitária nos bairros (SUGESTÃO)</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=80" alt="Lançamento oficial da candidatura">
+          <div class="gallery-caption">Lançamento oficial da candidatura (Número da Candidata ?????)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BANNER DE ENGAJAMENTO ================= -->
+  <section id="apoie" style="padding-top: 1rem;">
+    <div class="container">
+      <div class="banner-apoio">
+        <span class="badge-urna"><i data-lucide="megaphone" size="16"></i> FAÇA PARTE DESSA MUDANÇA</span>
+        <h2>Leve a mensagem da Vereadora ????? para o seu bairro!</h2>
+        <p>Solicite adesivos para seu carro, bandeiras para sua residência ou envie sua sugestão de projeto para nossa equipe.</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="https://wa.me/5543988635712?text=Olá!%20Quero%20apoiar%20a%20campanha%20da%20Helena%2012345" target="_blank" class="btn btn-primary">
+            <i data-lucide="message-circle" size="18"></i> Falar com a Equipe no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="color: #fff; margin-bottom: 0.5rem;">Nome da Candidata • Vereadora ?????</h3>
+          <p>Coligação ????? • Compromisso com a transparência, participação popular e fiscalização eficiente.</p>
+        </div>
+        <div>
+          <h4 style="color: #fff; margin-bottom: 0.5rem;">Redes Oficiais</h4>
+          <p>Instagram: @candidata.oficial</p>
+          <p>Facebook: /candidataofocial11111</p>
+          <p>Para falar via e-mail conosco, acesse a página de <a href="contato.html">contato</a>.</p>
+
+        </div>
+      </div>
+      <div class="footer-legal">
+        Propaganda Eleitoral • CNPJ da Candidata: 00.000.000/0001-00 • Coligação ??????. Material produzido conforme a legislação eleitoral vigente.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante WhatsApp -->
+  <a href="https://wa.me/5543988635712?text=Olá,%20gostaria%20de%20conhecer%20mais%20as%20propostas%20da%20Helena%2012345" target="_blank" class="whatsapp-float" aria-label="WhatsApp da Campanha">
+    <i data-lucide="message-circle" size="20"></i>
+    <span>Fale Conosco</span>
+  </a>
+
+  <!-- Modal Lightbox da Galeria -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <img id="lightboxImg" src="" alt="">
+      <p class="lightbox-text" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Inicializa ícones Lucide
+    lucide.createIcons();
+
+    // 1. MENU MOBILE TOGGLE
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Fecha o menu ao clicar em um link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // 2. CARROSSEL DE BANNERS (AUTOPLAY + CONTROLES + SWIPE TOUCH)
+    const track = document.getElementById('slidesTrack');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = dots.length;
+
+    function goToSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.index));
+      });
+    });
+
+    // Rotação automática a cada 6 segundos
+    let slideInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+
+    // Suporte a gesto de deslizar (Swipe) no celular
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+      clearInterval(slideInterval);
+    }, { passive: true });
+
+    track.addEventListener('touchend', e => {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 50) goToSlide(currentSlide + 1);
+      if (touchEndX - touchStartX > 50) goToSlide(currentSlide - 1);
+      slideInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+    }, { passive: true });
+
+    // 3. FILTRO INTERATIVO DE PROPOSTAS
+    const filterBtns = document.querySelectorAll('.tab-btn');
+    const proposalCards = document.querySelectorAll('.proposal-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        proposalCards.forEach(card => {
+          if (filter === 'todos' || card.dataset.category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 4. CONFIRMAÇÃO DE PRESENÇA NA AGENDA
+    function togglePresenca(button) {
+      const isConfirmed = button.classList.toggle('confirmed');
+      if (isConfirmed) {
+        button.innerHTML = '<i data-lucide="check" size="16"></i> Presença Confirmada!';
+      } else {
+        button.innerHTML = '<i data-lucide="calendar-check" size="16"></i> Confirmar Presença';
+      }
+      lucide.createIcons();
+    }
+
+    // 5. LIGHTBOX DA GALERIA DE FOTOS
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(element) {
+      const img = element.querySelector('img');
+      const caption = element.querySelector('.gallery-caption');
+      lightboxImg.src = img.src;
+      lightboxCaption.textContent = caption.textContent;
+      lightbox.classList.add('open');
+    }
+
+    function closeLightbox(event) {
+      if (event.target === lightbox || event.target.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('open');
+      }
+    }
+  </script>
+</body>
+</html>
